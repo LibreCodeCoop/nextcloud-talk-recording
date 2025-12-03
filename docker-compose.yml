@@ -1,0 +1,41 @@
+  recording:
+    container_name: ${CONTAINER_NAME}
+    image: ${IMAGE_NAME}:${IMAGE_TAG}
+    init: true
+    environment:
+      - NC_DOMAIN=${NC_DOMAIN}
+      - TZ=${TZ}
+      - RECORDING_SECRET=${RECORDING_SECRET}
+      - INTERNAL_SECRET=${INTERNAL_SECRET}
+      - HPB_PROTOCOL=${HPB_PROTOCOL}
+      - HPB_DOMAIN=${HPB_DOMAIN}
+      - HPB_PATH=${HPB_PATH}
+      - NC_PROTOCOL=${NC_PROTOCOL}
+      - SKIP_VERIFY=${SKIP_VERIFY}
+      - ALLOW_ALL=${ALLOW_ALL}
+      - VIRTUAL_HOST=${VIRTUAL_HOST}
+      - LETSENCRYPT_HOST=${LETSENCRYPT_HOST}
+      - LETSENCRYPT_EMAIL=${LETSENCRYPT_EMAIL}
+      - VIRTUAL_PORT=${VIRTUAL_PORT}
+    shm_size: ${SHM_SIZE}
+    restart: ${RESTART_POLICY}
+    profiles:
+      - ${PROFILE}
+    networks:
+      - ${NETWORK_PROXY}
+      - ${NETWORK_INTERNAL}
+    read_only: true
+    tmpfs:
+      - /tmp
+      - /conf
+    cap_drop:
+      - NET_RAW
+    deploy:
+      resources:
+        limits:
+          cpus: '${CPUS_LIMIT}'
+          memory: ${MEMORY_LIMIT}
+        reservations:
+          cpus: '${CPUS_RESERVATION}'
+          memory: ${MEMORY_RESERVATION}
+ 
