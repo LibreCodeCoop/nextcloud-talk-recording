@@ -114,12 +114,32 @@ MEMORY_RESERVATION=2048M
 SHM_SIZE=2147483648  # 2GB
 ```
 
-## Build da imagem
+### 6. Configurar imagem Docker
 
-Build a imagem Docker:
+Por padrão, o `.env` usa a imagem publicada no GitHub Container Registry:
 
 ```bash
+IMAGE_NAME=ghcr.io/librecodecoop/nextcloud-talk-recording
+IMAGE_TAG=latest
+```
+
+**Opções de tags disponíveis:**
+- `latest` - Última versão da branch main
+- `main` - Branch main (mesma coisa que latest)
+- `v0.2.1` - Versão específica (quando criar tags)
+- `main-<sha>` - Commit específico
+
+**Build local (opcional):**
+
+Se preferir fazer build localmente:
+
+```bash
+# Build da imagem
 docker build -t nextcloud-talk:0.2.1 .
+
+# Ajuste o .env para usar a imagem local
+IMAGE_NAME=nextcloud-talk
+IMAGE_TAG=0.2.1
 ```
 
 ## Executar o serviço
@@ -215,6 +235,16 @@ docker compose --env-file .env.local --profile talk-recording down
 ### Atualizar a imagem
 
 ```bash
+# Pull da última versão
+docker compose --env-file .env.local --profile talk-recording pull
+
+# Restart com a nova imagem
+docker compose --env-file .env.local --profile talk-recording up -d
+```
+
+Se estiver usando build local:
+
+```bash
 # Rebuild
 docker build -t nextcloud-talk:0.2.1 .
 
@@ -257,6 +287,30 @@ O container executa com:
 - FFmpeg (processamento de vídeo)
 - Xvfb (X virtual framebuffer)
 - PulseAudio (áudio)
+
+## CI/CD
+
+Este repositório possui GitHub Actions configurado para:
+
+- **Build automático**: A cada push na branch `main`
+- **Multi-arquitetura**: Builds para `linux/amd64` e `linux/arm64`
+- **Publicação no GHCR**: Imagens disponíveis em `ghcr.io/librecodecoop/nextcloud-talk-recording`
+- **Tagging automático**: Quando criar tags `v*`, gera versões semânticas
+- **Cache otimizado**: Usa GitHub Actions cache para acelerar builds
+- **Artifact attestation**: Verificação de proveniência da imagem
+
+### Tags geradas automaticamente:
+
+- `latest` - Última versão da branch main
+- `main` - Branch main
+- `main-<sha>` - Commit específico (ex: `main-a1b2c3d`)
+- `v0.2.1`, `v0.2`, `v0` - Quando criar tag de versão
+
+### Disparar build manual:
+
+1. Vá para **Actions** no GitHub
+2. Selecione **Build and Push Docker Image**
+3. Clique em **Run workflow**
 
 ## Suporte
 
