@@ -319,7 +319,7 @@ Para problemas ou dúvidas:
 - Logs do container: `docker compose logs recording`
 - Documentação oficial: https://github.com/nextcloud/nextcloud-talk-recording
 - Issues do projeto upstream: https://github.com/nextcloud/nextcloud-talk-recording/issues
-
+- Implementação no Nextcloud AIO: https://github.com/nextcloud/all-in-one/tree/main/Containers/talk-recording
 ## Licença
 
 Este serviço é baseado no projeto Nextcloud Talk Recording, mantido pela Nextcloud GmbH.
