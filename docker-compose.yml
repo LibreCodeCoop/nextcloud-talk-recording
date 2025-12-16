@@ -1,3 +1,12 @@
+networks:
+  reverse-proxy:
+    external: true
+    name: reverse-proxy
+  internal:
+    external: true
+    name: internal
+
+services:
   recording:
     container_name: ${CONTAINER_NAME}
     image: ${IMAGE_NAME}:${IMAGE_TAG}
