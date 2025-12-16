@@ -15,7 +15,7 @@ Serviço de gravação para Nextcloud Talk baseado no [nextcloud-talk-recording]
 ### 1. Clone o repositório
 
 ```bash
-git clone <https://github.com/LibreCodeCoop/nextcloud-talk-recording
+git clone https://github.com/LibreCodeCoop/nextcloud-talk-recording
 cd nextcloud-talk-recording
 ```
 
