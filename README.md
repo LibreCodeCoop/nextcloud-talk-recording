@@ -1,6 +1,6 @@
 # Nextcloud Talk Recording Service
 
-Serviço de gravação para Nextcloud Talk baseado no [nextcloud-talk-recording](https://github.com/nextcloud/nextcloud-talk-recording) v0.2.1.
+Serviço de gravação do [Nextcloud Talk](https://github.com/nextcloud/nextcloud-talk-recording) v0.2.1.
 
 ## Pré-requisitos
 
