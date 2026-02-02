@@ -24,8 +24,7 @@ cd nextcloud-talk-recording
 Copie o arquivo `.env` de exemplo e edite com suas configurações:
 
 ```bash
-cp .env .env.local
-nano .env.local
+nano .env
 ```
 
 #### Variáveis obrigatórias para ajustar:
