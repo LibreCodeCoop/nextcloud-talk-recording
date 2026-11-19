@@ -1,6 +1,6 @@
 # Nextcloud Talk Recording Service
 
-Serviço de gravação do [Nextcloud Talk](https://github.com/nextcloud/nextcloud-talk-recording) v0.2.1.
+Serviço de gravação do [Nextcloud Talk](https://github.com/nextcloud/nextcloud-talk-recording) v0.3.1.
 
 ## Pré-requisitos
 
@@ -21,10 +21,11 @@ cd nextcloud-talk-recording
 
 ### 2. Configure as variáveis de ambiente
 
-Copie o arquivo `.env` de exemplo e edite com suas configurações:
+Copie o arquivo `.env` de exemplo para `.env.local` e edite suas configurações. O `.env.local` é ignorado pelo Git:
 
 ```bash
-nano .env
+cp .env .env.local
+nano .env.local
 ```
 
 #### Variáveis obrigatórias para ajustar:
@@ -125,7 +126,7 @@ IMAGE_TAG=latest
 **Opções de tags disponíveis:**
 - `latest` - Última versão da branch main
 - `main` - Branch main (mesma coisa que latest)
-- `v0.2.1` - Versão específica (quando criar tags)
+- `v0.3.1` - Versão específica
 - `main-<sha>` - Commit específico
 
 **Build local (opcional):**
@@ -134,7 +135,7 @@ Se preferir fazer build localmente:
 
 ```bash
 # Build da imagem
-docker build -t nextcloud-talk:0.2.1 .
+docker build -t nextcloud-talk:0.3.1 .
 
 # Ajuste o .env para usar a imagem local
 IMAGE_NAME=nextcloud-talk
@@ -245,7 +246,7 @@ Se estiver usando build local:
 
 ```bash
 # Rebuild
-docker build -t nextcloud-talk:0.2.1 .
+docker build -t nextcloud-talk:0.3.1 .
 
 # Restart
 docker compose --env-file .env.local --profile talk-recording up -d
@@ -281,7 +282,7 @@ O container executa com:
 
 ## Componentes instalados
 
-- Python 3.14.0
+- Python 3.14.10
 - Firefox + Geckodriver (para gravação via browser)
 - FFmpeg (processamento de vídeo)
 - Xvfb (X virtual framebuffer)
@@ -303,7 +304,7 @@ Este repositório possui GitHub Actions configurado para:
 - `latest` - Última versão da branch main
 - `main` - Branch main
 - `main-<sha>` - Commit específico (ex: `main-a1b2c3d`)
-- `v0.2.1`, `v0.2`, `v0` - Quando criar tag de versão
+- `v0.3.1`, `v0.3`, `v0` - Quando criar tag de versão
 
 ### Disparar build manual:
 

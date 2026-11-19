@@ -1,10 +1,10 @@
 # syntax=docker/dockerfile:latest
-FROM python:3.14.3-alpine3.23
+FROM python:3.14.10-alpine3.23
 
 COPY --chmod=775 start.sh /start.sh
 COPY --chmod=775 healthcheck.sh /healthcheck.sh
 
-ENV RECORDING_VERSION=v0.2.1
+ENV RECORDING_VERSION=v0.3.1
 ENV ALLOW_ALL=false
 ENV HPB_PROTOCOL=https
 ENV NC_PROTOCOL=https
