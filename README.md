@@ -1,5 +1,24 @@
 # Nextcloud Talk Recording Service
 
+> **Ciclo de vida:** imagem legada, mantida temporariamente como possibilidade
+> de rollback enquanto a LibreCode avalia a substituição pela imagem oficial
+> `ghcr.io/nextcloud-releases/aio-talk-recording`. Novos deploys devem preferir
+> a imagem oficial, após teste de compatibilidade com a infraestrutura existente.
+> Não arquivar nem apagar este repositório antes de identificar o digest ativo
+> na Sara e homologar o caminho de retorno. Consulte `infrastructure-operations#51`
+> e o PR `infrastructure-operations#60` para os critérios de migração.
+
+**Aviso sobre dados:** o `start.sh` apaga o conteúdo de `/tmp` na inicialização.
+A gravação em andamento e arquivos de uploads falhos podem ser perdidos ao
+reiniciar, inclusive se `/tmp` for um volume persistente. Não armazene dados
+não relacionados neste volume.
+
+**CI:** o GHCR usa tags `sha-<commit>` para pull requests e o upload extra
+de atestados só é ativado por `ENABLE_ARTIFACT_ATTESTATION=true` em variáveis
+do repositório, após confirmação das permissões. O build continua produzindo
+a proveniência padrão do BuildKit. A falha de atestação em 19/11/2026 não
+impediu a publicação da imagem; não equivale a uma falha no build.
+
 Serviço de gravação do [Nextcloud Talk](https://github.com/nextcloud/nextcloud-talk-recording) v0.3.1.
 
 ## Pré-requisitos

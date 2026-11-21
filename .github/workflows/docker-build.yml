@@ -50,7 +50,7 @@ jobs:
             type=semver,pattern={{major}}.{{minor}}
             type=semver,pattern={{major}}
             type=raw,value=latest,enable={{is_default_branch}}
-            type=sha,prefix={{branch}}-
+            type=sha,prefix=sha-
 
       - name: Build and push Docker image
         id: build
@@ -65,7 +65,10 @@ jobs:
           cache-to: type=gha,mode=max
 
       - name: Generate artifact attestation
-        if: github.event_name != 'pull_request'
+        # Only enable when the repository installation has the required
+        # actions:write/attestations permissions. The container build already
+        # emits BuildKit provenance independently of this optional upload.
+        if: github.event_name != 'pull_request' && vars.ENABLE_ARTIFACT_ATTESTATION == 'true'
         uses: actions/attest-build-provenance@v4
         with:
           subject-name: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
