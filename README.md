@@ -1,5 +1,17 @@
 # Nextcloud Talk Recording Service
 
+> **Descontinuado — repositório arquivado.** Este projeto empacota o gravador
+> upstream da Nextcloud em uma imagem mantida pela LibreCode. Novas instalações
+> devem utilizar a **imagem oficial**:
+> `ghcr.io/nextcloud-releases/aio-talk-recording`, preferencialmente fixada
+> por digest OCI. Código-fonte e documentação:
+> [Nextcloud All-in-One — talk-recording](https://github.com/nextcloud/all-in-one/tree/main/Containers/talk-recording)
+> e [Nextcloud Talk Recording](https://github.com/nextcloud/nextcloud-talk-recording).
+>
+> As instruções abaixo são históricas e não recebem manutenção. Este repositório
+> permanece somente para consulta e eventual rollback; não são previstas novas
+> versões da imagem LibreCode.
+
 Serviço de gravação do [Nextcloud Talk](https://github.com/nextcloud/nextcloud-talk-recording) v0.3.1.
 
 ## Pré-requisitos
